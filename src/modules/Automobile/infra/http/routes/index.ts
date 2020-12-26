@@ -24,7 +24,21 @@ automobileRouter.post(
       color: Joi.string().required().strict(true),
       carBrand: Joi.string().required().strict(true),
     },
+    [Segments.PARAMS]: {
+      licensePlate: Joi.string().required().strict(true),
+    },
   }),
   automobileController.update,
 );
+
+automobileRouter.delete(
+  '/:licensePlate',
+  celebrate({
+    [Segments.PARAMS]: {
+      licensePlate: Joi.string().required().strict(true),
+    },
+  }),
+  automobileController.delete,
+);
+
 export default automobileRouter;

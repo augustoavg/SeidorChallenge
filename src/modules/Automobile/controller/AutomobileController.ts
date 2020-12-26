@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CreateAutomobileService from '../services/CreateAutomobileService';
 import UpdateAutomobileService from '../services/UpdateAutomobileService';
+import DeleteAutomobileService from '../services/DeleteAutomobileService';
 
 class AutoMobileController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -23,13 +24,25 @@ class AutoMobileController {
 
     const updateAutomobile = new UpdateAutomobileService();
 
-    const movie = await updateAutomobile.execute({
+    const automobile = await updateAutomobile.execute({
       licensePlate,
       color,
       carBrand,
     });
 
-    return response.json(movie);
+    return response.json(automobile);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { licensePlate } = request.params;
+
+    const deleteAutomobile = new DeleteAutomobileService();
+
+    const automobile = await deleteAutomobile.execute({
+      licensePlate,
+    });
+
+    return response.json(automobile);
   }
 }
 
