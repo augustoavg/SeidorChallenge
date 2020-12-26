@@ -19,6 +19,7 @@
       "prettier"
   ],
   "rules": {
+    "class-methods-use-this": "off",
      "import/extensions": [
       "error",
       "ignorePackages",
@@ -30,7 +31,11 @@
   },
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "typescript": {},
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"],
+        "paths": ["src"]
+      }
     }
   }
 }
