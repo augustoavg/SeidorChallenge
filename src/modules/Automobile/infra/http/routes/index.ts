@@ -17,4 +17,14 @@ automobileRouter.post(
   automobileController.create,
 );
 
+automobileRouter.post(
+  '/:licensePlate',
+  celebrate({
+    [Segments.BODY]: {
+      color: Joi.string().required().strict(true),
+      carBrand: Joi.string().required().strict(true),
+    },
+  }),
+  automobileController.update,
+);
 export default automobileRouter;

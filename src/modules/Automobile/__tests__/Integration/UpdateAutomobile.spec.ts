@@ -3,7 +3,7 @@ import Automobile from '../../infra/mongoose/schemas/Automobile';
 import MongoMock from '../../../../shared/__tests__/MongoMock';
 import app from '../../../../app';
 
-describe('Create a new automobile - Integration', () => {
+describe('Update a automobile - Integration', () => {
   beforeAll(async () => {
     await MongoMock.connect();
   });
@@ -16,22 +16,7 @@ describe('Create a new automobile - Integration', () => {
     await MongoMock.disconnect();
   });
 
-  it('should be able to create a new automobile', async () => {
-    const automobileData = {
-      licensePlate: '10',
-      color: 'blue',
-      carBrand: 'fiat',
-    };
-
-    const response = await request(app)
-      .post(`/automobile`)
-      .send(automobileData);
-
-    expect(response.status).toBe(200);
-    expect(response.body.licensePlate).toBe(automobileData.licensePlate);
-  });
-
-  it('should not be able to create two automobile with the same licensePlate', async () => {
+  it('should be able to update a automobile', async () => {
     const automobileData = {
       licensePlate: '10',
       color: 'blue',
@@ -40,9 +25,28 @@ describe('Create a new automobile - Integration', () => {
 
     await Automobile.create(automobileData);
 
+    const automobileUpdateData = {
+      color: 'black',
+      carBrand: 'nissan',
+    };
+
     const response = await request(app)
-      .post(`/automobile`)
-      .send(automobileData);
+      .post(`/automobile/${automobileData.licensePlate}`)
+      .send(automobileUpdateData);
+
+    expect(response.status).toBe(200);
+    expect(response.body.licensePlate).toBe(automobileData.licensePlate);
+  });
+
+  it('should not be able to update a automobile that does not exist', async () => {
+    const automobileUpdateData = {
+      color: 'black',
+      carBrand: 'nissan',
+    };
+
+    const response = await request(app)
+      .post(`/automobile/${1}`)
+      .send(automobileUpdateData);
 
     expect(response.status).toBe(400);
   });
