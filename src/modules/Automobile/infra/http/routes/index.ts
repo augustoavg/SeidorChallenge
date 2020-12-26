@@ -41,4 +41,14 @@ automobileRouter.delete(
   automobileController.delete,
 );
 
+automobileRouter.get(
+  '/:licensePlate',
+  celebrate({
+    [Segments.PARAMS]: {
+      licensePlate: Joi.string().required().strict(true),
+    },
+  }),
+  automobileController.findByLicensePlate,
+);
+
 export default automobileRouter;
