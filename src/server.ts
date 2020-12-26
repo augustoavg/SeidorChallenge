@@ -1,5 +1,7 @@
 import app from './app';
 
-app.listen(3001, () => {
-  console.log('💻 Server running on port 3333!');
+const port = 9010;
+
+app.listen(port, () => {
+  console.log(`💻 Server running on port ${port}!`);
 });

@@ -3,6 +3,7 @@ import CreateAutomobileService from '../services/CreateAutomobileService';
 import UpdateAutomobileService from '../services/UpdateAutomobileService';
 import DeleteAutomobileService from '../services/DeleteAutomobileService';
 import FindByLicensePlateAutomobileService from '../services/FindByLicensePlateAutomobileService';
+import FindAutomobileService from '../services/FindAutomobileService';
 
 class AutoMobileController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -56,6 +57,18 @@ class AutoMobileController {
 
     const automobile = await findAutomobileByLicensePlate.execute({
       licensePlate,
+    });
+
+    return response.json(automobile);
+  }
+
+  public async find(request: Request, response: Response): Promise<Response> {
+    const { data } = request.body;
+
+    const findAutomobile = new FindAutomobileService();
+
+    const automobile = await findAutomobile.execute({
+      data,
     });
 
     return response.json(automobile);
