@@ -51,4 +51,14 @@ automobileRouter.get(
   automobileController.findByLicensePlate,
 );
 
+automobileRouter.get(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      data: Joi.object().strict(true),
+    },
+  }),
+  automobileController.find,
+);
+
 export default automobileRouter;
