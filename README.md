@@ -48,12 +48,12 @@ Existem duas maneiras de realizar o clone de um repositório, sendo elas: **SSH*
 
 Para clonar utilizando **SSH**, utilize o seguinte comando:
 ```bash
-git clone git@github.com:augustoavg/IliaMovie.git
+git clone git@github.com:augustoavg/SeidorChallenge.git
 ```
 
 Para clonar utilizando **HTTPS**, utilize o seguinte comando:
 ```bash
-git clone https://github.com/augustoavg/IliaMovie.git
+git clone https://github.com/augustoavg/SeidorChallenge.git
 ```
 
 ## *Download* de dependências
