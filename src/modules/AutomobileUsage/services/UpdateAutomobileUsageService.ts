@@ -1,7 +1,6 @@
 import AutomobileUsage, {
   IAutomobileUsageInterface,
 } from '../infra/mongoose/schemas/AutomobileUsage';
-import Automobile from '../../Automobile/infra/mongoose/schemas/Automobile';
 import Driver from '../../Driver/infra/mongoose/schemas/Driver';
 import AppError from '../../../shared/errors/AppError';
 

@@ -18,6 +18,7 @@ describe('Update a driver - Unity', () => {
 
   it('should be able to update a driver', async () => {
     const driverData = {
+      _id: '12345678910',
       taxId: '12345678910',
       name: 'test',
     };

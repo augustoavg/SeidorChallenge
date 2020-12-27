@@ -1,11 +1,11 @@
-import request from 'supertest';
+import AppError from '../../../../shared/errors/AppError';
 import MongoMock from '../../../../shared/__tests__/MongoMock';
 import AutomobileUsage from '../../infra/mongoose/schemas/AutomobileUsage';
 import Automobile from '../../../Automobile/infra/mongoose/schemas/Automobile';
 import Driver from '../../../Driver/infra/mongoose/schemas/Driver';
-import app from '../../../../app';
+import FindAutomobileUsageService from '../../services/FindAutomobileUsageService';
 
-describe('Update a automobile usage - Integration', () => {
+describe('Find automobile usage - Unity', () => {
   beforeAll(async () => {
     await MongoMock.connect();
   });
@@ -20,7 +20,7 @@ describe('Update a automobile usage - Integration', () => {
     await MongoMock.disconnect();
   });
 
-  it('should be able to update a automobile usage', async () => {
+  it('should be able to find automobile usage', async () => {
     const automobile = await Automobile.create({
       _id: '10',
       licensePlate: '10',
@@ -40,26 +40,10 @@ describe('Update a automobile usage - Integration', () => {
       reason: 'work',
     });
 
-    const response = await request(app).post(`/usage/${driver.taxId}`);
+    const automobileUsage = new FindAutomobileUsageService();
 
-    expect(response.status).toBe(200);
-  });
+    const usageUpdated = await automobileUsage.execute();
 
-  it('should not be able to update a automobile usage when driver does not exist', async () => {
-    const response = await request(app).post(`/usage/10`);
-
-    expect(response.status).toBe(400);
-  });
-
-  it('should not be able to update a automobile usage when driver is not using a automobile', async () => {
-    const driver = await Driver.create({
-      _id: '12345678910',
-      name: 'test',
-      taxId: '12345678910',
-    });
-
-    const response = await request(app).post(`/usage/${driver.taxId}`);
-
-    expect(response.status).toBe(400);
+    expect(usageUpdated).toHaveLength(1);
   });
 });

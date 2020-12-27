@@ -9,7 +9,7 @@ const mongoUserPass = mongoConfig.username
 if (!process.env.MONGO_URL) {
   mongoose
     .connect(
-      `mongodb+srv://augusto:augusto@augusto.9aslu.mongodb.net/SeidorChallenge`,
+      `mongodb://${mongoUserPass}${mongoConfig.host}:${mongoConfig.port}/${mongoConfig.database}`,
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
@@ -19,5 +19,6 @@ if (!process.env.MONGO_URL) {
     )
     .then(() => {
       console.log('🔆 Connection to database established.');
-    });
+    })
+    .catch(err => console.log(err));
 }

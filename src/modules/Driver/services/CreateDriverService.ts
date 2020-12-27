@@ -18,6 +18,7 @@ class CreateDriverService {
     }
 
     const automobile = await Driver.create({
+      _id: taxId,
       taxId,
       name,
     });

@@ -18,6 +18,7 @@ describe('Find a driver by tax name - Integration', () => {
 
   it('should be able to find a driver by name', async () => {
     const driverData = {
+      _id: '12345678910',
       taxId: '12345678910',
       name: 'test',
     };
@@ -36,11 +37,13 @@ describe('Find a driver by tax name - Integration', () => {
 
   it('should be able to find all drivers', async () => {
     const driverData = {
+      _id: '12345678910',
       taxId: '12345678910',
       name: 'test',
     };
 
     const driverData2 = {
+      _id: '12345678911',
       taxId: '12345678911',
       name: 'test2',
     };

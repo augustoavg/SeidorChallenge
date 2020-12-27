@@ -18,6 +18,7 @@ describe('Update a automobile - Integration', () => {
 
   it('should be able to update a automobile', async () => {
     const automobileData = {
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'fiat',
@@ -39,6 +40,7 @@ describe('Update a automobile - Integration', () => {
 
   it('should not be able to update a automobile that does not exist', async () => {
     const automobileData = {
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'fiat',

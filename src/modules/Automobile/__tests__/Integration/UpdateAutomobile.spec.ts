@@ -23,7 +23,12 @@ describe('Update a automobile - Integration', () => {
       carBrand: 'fiat',
     };
 
-    await Automobile.create(automobileData);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'blue',
+      carBrand: 'fiat',
+    });
 
     const automobileUpdateData = {
       color: 'black',

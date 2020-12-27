@@ -23,7 +23,12 @@ describe('Find a automobile by license plate - Integration', () => {
       carBrand: 'fiat',
     };
 
-    await Automobile.create(automobileData);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'blue',
+      carBrand: 'fiat',
+    });
 
     const response = await request(app).get(
       `/automobile/${automobileData.licensePlate}`,

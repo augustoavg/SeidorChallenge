@@ -22,12 +22,14 @@ describe('Create a new automobile usage - Integration', () => {
 
   it('should be able to create a new automobile usage', async () => {
     const automobile = await Automobile.create({
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'nissan',
     });
 
     const driver = await Driver.create({
+      _id: '12345678910',
       name: 'test',
       taxId: '12345678910',
     });
@@ -45,6 +47,7 @@ describe('Create a new automobile usage - Integration', () => {
 
   it('should not be able to create a new automobile usage when automobile does not exist', async () => {
     const driver = await Driver.create({
+      _id: '12345678910',
       name: 'test',
       taxId: '12345678910',
     });
@@ -60,6 +63,7 @@ describe('Create a new automobile usage - Integration', () => {
 
   it('should not be able to create a new automobile usage when driver does not exist', async () => {
     const automobile = await Automobile.create({
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'nissan',
@@ -76,17 +80,20 @@ describe('Create a new automobile usage - Integration', () => {
 
   it('should not be able to create a new automobile usage if automobile is already being used', async () => {
     const automobile = await Automobile.create({
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'nissan',
     });
 
     const driver = await Driver.create({
+      _id: '12345678910',
       name: 'test',
       taxId: '12345678910',
     });
 
     const driver2 = await Driver.create({
+      _id: '12345678911',
       name: 'test2',
       taxId: '12345678911',
     });
@@ -108,18 +115,21 @@ describe('Create a new automobile usage - Integration', () => {
 
   it('should not be able to create a new automobile usage if driver is already using one automobile', async () => {
     const automobile = await Automobile.create({
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'nissan',
     });
 
     const automobile2 = await Automobile.create({
+      _id: '11',
       licensePlate: '11',
       color: 'black',
       carBrand: 'nissan',
     });
 
     const driver = await Driver.create({
+      _id: '12345678910',
       name: 'test',
       taxId: '12345678910',
     });

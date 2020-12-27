@@ -38,7 +38,12 @@ describe('Create a new automobile - Unity', () => {
       carBrand: 'fiat',
     };
 
-    await Automobile.create(automobileData);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'blue',
+      carBrand: 'fiat',
+    });
 
     const createAutomobile = new CreateAutomobileService();
 

@@ -11,6 +11,9 @@ type DriverModel = Model<DriverDocument>;
 
 const DriverSchema = new Schema(
   {
+    _id: {
+      type: String,
+    },
     taxId: {
       type: String,
       required: true,

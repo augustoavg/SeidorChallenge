@@ -22,6 +22,7 @@ class CreateMovieService {
     }
 
     const automobile = await Automobile.create({
+      _id: licensePlate,
       licensePlate,
       color,
       carBrand,
