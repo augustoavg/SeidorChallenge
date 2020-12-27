@@ -1,0 +1,49 @@
+import AppError from '../../../../shared/errors/AppError';
+import MongoMock from '../../../../shared/__tests__/MongoMock';
+import Driver from '../../infra/mongoose/schemas/Driver';
+import DeleteDriverService from '../../services/DeleteDriverService';
+
+describe('Delete a driver - Unity', () => {
+  beforeAll(async () => {
+    await MongoMock.connect();
+  });
+
+  beforeEach(async () => {
+    await Driver.deleteMany({});
+  });
+
+  afterAll(async () => {
+    await MongoMock.disconnect();
+  });
+
+  it('should be able to delete a driver', async () => {
+    const driverData = {
+      taxId: '12345678910',
+      name: 'test',
+    };
+
+    await Driver.create(driverData);
+
+    const deleteDriver = new DeleteDriverService();
+
+    const driver = await deleteDriver.execute({
+      taxId: driverData.taxId,
+    });
+
+    expect(driver).toBeDefined();
+    expect(driver.taxId).toBe(driverData.taxId);
+  });
+
+  it('should not be able to delete a driver if doesnt exists', async () => {
+    const driverData = {
+      taxId: '12345678910',
+      name: 'teste',
+    };
+
+    const deleteDriver = new DeleteDriverService();
+
+    await expect(deleteDriver.execute(driverData)).rejects.toBeInstanceOf(
+      AppError,
+    );
+  });
+});

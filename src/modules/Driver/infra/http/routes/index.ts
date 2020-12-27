@@ -39,4 +39,14 @@ driverRouter.delete(
   driverController.delete,
 );
 
+driverRouter.get(
+  '/:taxId',
+  celebrate({
+    [Segments.PARAMS]: {
+      taxId: Joi.string().required().strict(true),
+    },
+  }),
+  driverController.findByTaxId,
+);
+
 export default driverRouter;
