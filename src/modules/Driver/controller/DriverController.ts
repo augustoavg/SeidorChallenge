@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import CreateDriverService from '../services/CreateDriverService';
 import UpdateDriverService from '../services/UpdateDriverService';
+import DeleteDriverService from '../services/DeleteDriverService';
 
 class DriverController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -25,6 +26,18 @@ class DriverController {
     const driver = await updateDriver.execute({
       taxId,
       name,
+    });
+
+    return response.json(driver);
+  }
+
+  public async delete(request: Request, response: Response): Promise<Response> {
+    const { taxId } = request.params;
+
+    const deleteDriver = new DeleteDriverService();
+
+    const driver = await deleteDriver.execute({
+      taxId,
     });
 
     return response.json(driver);

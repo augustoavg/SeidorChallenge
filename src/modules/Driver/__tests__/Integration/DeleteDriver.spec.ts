@@ -3,7 +3,7 @@ import Driver from '../../infra/mongoose/schemas/Driver';
 import MongoMock from '../../../../shared/__tests__/MongoMock';
 import app from '../../../../app';
 
-describe('Update a driver - Integration', () => {
+describe('Delete a driver - Integration', () => {
   beforeAll(async () => {
     await MongoMock.connect();
   });
@@ -16,7 +16,7 @@ describe('Update a driver - Integration', () => {
     await MongoMock.disconnect();
   });
 
-  it('should be able to update a driver', async () => {
+  it('should be able to delete a driver', async () => {
     const driverData = {
       taxId: '12345678910',
       name: 'test',
@@ -24,18 +24,14 @@ describe('Update a driver - Integration', () => {
 
     await Driver.create(driverData);
 
-    const response = await request(app)
-      .post(`/driver/${driverData.taxId}`)
-      .send({ name: 'new test' });
+    const response = await request(app).delete(`/driver/${driverData.taxId}`);
 
     expect(response.status).toBe(200);
-    expect(response.body.name).toBe('new test');
+    expect(response.body.taxId).toBe(driverData.taxId);
   });
 
-  it('should not be able to update a driver if does not exists', async () => {
-    const response = await request(app)
-      .post(`/driver/1`)
-      .send({ name: 'test' });
+  it('should not be able to delete a driver that does not exists', async () => {
+    const response = await request(app).delete(`/driver/1`);
 
     expect(response.status).toBe(400);
   });
