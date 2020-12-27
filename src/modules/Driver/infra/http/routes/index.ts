@@ -16,4 +16,17 @@ driverRouter.post(
   driverController.create,
 );
 
+driverRouter.post(
+  '/:taxId',
+  celebrate({
+    [Segments.BODY]: {
+      name: Joi.string().required().strict(true),
+    },
+    [Segments.PARAMS]: {
+      taxId: Joi.string().required().strict(true),
+    },
+  }),
+  driverController.update,
+);
+
 export default driverRouter;
