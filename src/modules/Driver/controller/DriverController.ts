@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import CreateDriverService from '../services/CreateDriverService';
 import UpdateDriverService from '../services/UpdateDriverService';
 import DeleteDriverService from '../services/DeleteDriverService';
+import FindDriverService from '../services/FindDriverService';
 
 class DriverController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -37,6 +38,21 @@ class DriverController {
     const deleteDriver = new DeleteDriverService();
 
     const driver = await deleteDriver.execute({
+      taxId,
+    });
+
+    return response.json(driver);
+  }
+
+  public async findByTaxId(
+    request: Request,
+    response: Response,
+  ): Promise<Response> {
+    const { taxId } = request.params;
+
+    const findDriver = new FindDriverService();
+
+    const driver = await findDriver.execute({
       taxId,
     });
 
