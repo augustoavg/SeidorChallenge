@@ -49,4 +49,14 @@ driverRouter.get(
   driverController.findByTaxId,
 );
 
+driverRouter.get(
+  '/',
+  celebrate({
+    [Segments.BODY]: {
+      data: Joi.object().strict(true),
+    },
+  }),
+  driverController.find,
+);
+
 export default driverRouter;
