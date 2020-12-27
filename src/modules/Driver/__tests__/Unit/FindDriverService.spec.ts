@@ -18,6 +18,7 @@ describe('Find a driver by tax id - Unity', () => {
 
   it('should be able to find a driver', async () => {
     const driverData = {
+      _id: '12345678910',
       taxId: '12345678910',
       name: 'test',
     };

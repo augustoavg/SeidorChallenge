@@ -30,6 +30,7 @@ describe('Create a new driver - Integration', () => {
 
   it('should not be able to create a driver if already exists', async () => {
     const driverData = {
+      _id: '12345678910',
       taxId: '12345678910',
       name: 'teste',
     };

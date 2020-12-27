@@ -18,12 +18,14 @@ describe('Find a automobile - Integration', () => {
 
   it('should be able to find all automobile', async () => {
     const automobileData = {
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'fiat',
     };
 
     const automobileData2 = {
+      _id: '11',
       licensePlate: '11',
       color: 'blue',
       carBrand: 'nissan',
@@ -41,12 +43,14 @@ describe('Find a automobile - Integration', () => {
 
   it('should be able to find automobile by color', async () => {
     const automobileData = {
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'fiat',
     };
 
     const automobileData2 = {
+      _id: '11',
       licensePlate: '11',
       color: 'blue',
       carBrand: 'nissan',
@@ -66,12 +70,14 @@ describe('Find a automobile - Integration', () => {
 
   it('should not be able to find a automobile by carBrand', async () => {
     const automobileData = {
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'fiat',
     };
 
     const automobileData2 = {
+      _id: '11',
       licensePlate: '11',
       color: 'blue',
       carBrand: 'nissan',
@@ -91,18 +97,21 @@ describe('Find a automobile - Integration', () => {
 
   it('should not be able to find a automobile by carBrand and color', async () => {
     const automobileData = {
+      _id: '10',
       licensePlate: '10',
       color: 'red',
       carBrand: 'nissan',
     };
 
     const automobileData2 = {
+      _id: '11',
       licensePlate: '11',
       color: 'blue',
       carBrand: 'nissan',
     };
 
     const automobileData3 = {
+      _id: '12',
       licensePlate: '12',
       color: 'blue',
       carBrand: 'nissan',

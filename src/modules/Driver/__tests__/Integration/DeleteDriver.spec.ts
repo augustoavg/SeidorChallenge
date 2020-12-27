@@ -18,6 +18,7 @@ describe('Delete a driver - Integration', () => {
 
   it('should be able to delete a driver', async () => {
     const driverData = {
+      _id: '12345678910',
       taxId: '12345678910',
       name: 'test',
     };

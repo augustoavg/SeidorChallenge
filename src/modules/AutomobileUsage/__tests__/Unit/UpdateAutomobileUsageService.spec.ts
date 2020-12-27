@@ -22,12 +22,14 @@ describe('Update a automobile usage - Unity', () => {
 
   it('should be able to update a automobile usage', async () => {
     const automobile = await Automobile.create({
+      _id: '10',
       licensePlate: '10',
       color: 'blue',
       carBrand: 'nissan',
     });
 
     const driver = await Driver.create({
+      _id: '12345678910',
       name: 'test',
       taxId: '12345678910',
     });
@@ -62,6 +64,7 @@ describe('Update a automobile usage - Unity', () => {
 
   it('should not be able to update a automobile usage when driver is not using a automobile', async () => {
     const driver = await Driver.create({
+      _id: '12345678910',
       name: 'test',
       taxId: '12345678910',
     });

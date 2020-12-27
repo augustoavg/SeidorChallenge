@@ -12,6 +12,9 @@ type AutomobileModel = Model<AutomobileDocument>;
 
 const AutomobileSchema = new Schema(
   {
+    _id: {
+      type: String,
+    },
     licensePlate: {
       type: String,
       required: true,

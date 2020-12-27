@@ -29,8 +29,18 @@ describe('Find a automobile - Integration', () => {
       carBrand: 'nissan',
     };
 
-    await Automobile.create(automobileData);
-    await Automobile.create(automobileData2);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'blue',
+      carBrand: 'fiat',
+    });
+    await Automobile.create({
+      _id: '11',
+      licensePlate: '11',
+      color: 'blue',
+      carBrand: 'nissan',
+    });
 
     const response = await request(app).get(`/automobile`).send({ data: {} });
 
@@ -51,8 +61,18 @@ describe('Find a automobile - Integration', () => {
       carBrand: 'nissan',
     };
 
-    await Automobile.create(automobileData);
-    await Automobile.create(automobileData2);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'blue',
+      carBrand: 'fiat',
+    });
+    await Automobile.create({
+      _id: '11',
+      licensePlate: '11',
+      color: 'blue',
+      carBrand: 'nissan',
+    });
 
     const response = await request(app)
       .get(`/automobile`)
@@ -75,8 +95,18 @@ describe('Find a automobile - Integration', () => {
       carBrand: 'nissan',
     };
 
-    await Automobile.create(automobileData);
-    await Automobile.create(automobileData2);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'blue',
+      carBrand: 'fiat',
+    });
+    await Automobile.create({
+      _id: '11',
+      licensePlate: '11',
+      color: 'blue',
+      carBrand: 'nissan',
+    });
 
     const response = await request(app)
       .get(`/automobile`)
@@ -105,9 +135,24 @@ describe('Find a automobile - Integration', () => {
       carBrand: 'nissan',
     };
 
-    await Automobile.create(automobileData);
-    await Automobile.create(automobileData2);
-    await Automobile.create(automobileData3);
+    await Automobile.create({
+      _id: '10',
+      licensePlate: '10',
+      color: 'red',
+      carBrand: 'nissan',
+    });
+    await Automobile.create({
+      _id: '11',
+      licensePlate: '11',
+      color: 'blue',
+      carBrand: 'nissan',
+    });
+    await Automobile.create({
+      _id: '12',
+      licensePlate: '12',
+      color: 'blue',
+      carBrand: 'nissan',
+    });
 
     const response = await request(app)
       .get(`/automobile`)

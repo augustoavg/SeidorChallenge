@@ -27,4 +27,6 @@ automobileUsageRouter.post(
   automobileUsageController.update,
 );
 
+automobileUsageRouter.get('/', automobileUsageController.find);
+
 export default automobileUsageRouter;
