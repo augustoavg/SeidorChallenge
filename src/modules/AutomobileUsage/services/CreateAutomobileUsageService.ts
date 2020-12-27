@@ -34,10 +34,11 @@ class CreateAutomobileUsageService {
     const automobileAlreadyUsed: IAutomobileUsageInterface | null = await AutomobileUsage.findOne(
       {
         automobile: automobilePlate,
+        endDate: undefined,
       },
     );
 
-    if (automobileAlreadyUsed && !automobileAlreadyUsed.endDate) {
+    if (automobileAlreadyUsed) {
       throw new AppError('Automobile is already being used by other driver.');
     }
 

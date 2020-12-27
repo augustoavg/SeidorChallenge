@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import CreateAutomobileUsageService from '../services/CreateAutomobileUsageService';
+import UpdateAutomobileUsageService from '../services/UpdateAutomobileUsageService';
 
 class AutoMobileUsageController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -11,6 +12,18 @@ class AutoMobileUsageController {
       driver,
       automobilePlate,
       reason,
+    });
+
+    return response.json(automobile);
+  }
+
+  public async update(request: Request, response: Response): Promise<Response> {
+    const { taxId } = request.params;
+
+    const updateAutomobile = new UpdateAutomobileUsageService();
+
+    const automobile = await updateAutomobile.execute({
+      taxId,
     });
 
     return response.json(automobile);

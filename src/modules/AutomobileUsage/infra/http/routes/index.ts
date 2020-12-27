@@ -17,4 +17,14 @@ automobileUsageRouter.post(
   automobileUsageController.create,
 );
 
+automobileUsageRouter.post(
+  '/:taxId',
+  celebrate({
+    [Segments.PARAMS]: {
+      taxId: Joi.string().required().strict(true),
+    },
+  }),
+  automobileUsageController.update,
+);
+
 export default automobileUsageRouter;
